@@ -6,15 +6,15 @@
 
 ###Création  du Container Docker
 
+#### Création du Dockerfile 
+
 Le container docker est crée à partir d'une image php trouvée sur le site dockeHub https://hub.docker.com/_/php/ 
 
 L'image "php:7.0-apache" offre un serveur apache permettant permettant de servir des pages php en version 7.0 du language. 
 
 Le DockerFile copie tous les fichiers du dossier `./content` dans le dossier `/var/www/html` du container, où se trouve les sites webs que nous voulons héberger.
 
-Pour créer l'image docker utiliser la commande 
-
-### Demarrage du container Docker
+#### Demarrage du container Docker
 
 Pour créer l'image docker, lancer la commande: 
 
@@ -26,7 +26,7 @@ Pour lancer le container il aut utiliser la commande:
 
 Pour nos exemples nous allons utiliser le port `9090`. 
 
-### Configuration du container Docker
+#### Configuration du container Docker
 
 Pour configurer le container docker il faut qu'il soit démarré (voir **Demarrage du container docker** ci-dessus). Une fois démarré, il faut se connecter dessus avec la commande `docker exec -it <id de votre container> /bin/bash` qui va démarrer un terminal accessible via votre console à l'intérieur de celui-ci.
 
@@ -46,8 +46,6 @@ Le fichier de configuration de virtual host, appelé `000-default.cong` se trouv
 
 Dans le dossier `./content` en local, on inclu un fichier `index.html`, dans lequel se trouvera le contenu de la page web. 
 
-
-
 #### Utilisation d'un template bootstrap
 
 La page index.html peut être remplie, mais sans javascript ou css, son aspect reste très pauvre. 
@@ -61,6 +59,24 @@ Il est possible de récupérer le template tout forme d'un dossier compresser.
 Pour appliquer le template au site: 
 
 Copier le contenu du fichier téléchargé dans le dossier `./content/` du projet (en local). Le template contient lui-même un fichier index.html qui'il est ensuite possible de modifier pour adapter la page woeb au gré de votre imagination. 
+
+
+
+## Partie 2
+
+## Création du container Docker
+
+#### Création du Dockerfile
+
+Le container docker est crée à partir d'une image php trouvée sur le site dockeHub https://hub.docker.com/_/node/
+
+L'image node:8.11.2 permet de démarrer un serveur node js et d'avoir accès à la commande npm qui permet de gérer les package que nous allons utiliser 
+
+Le DockerFile copie tous les fichiers du dossier `src` dans le dossier `/opt/app` du container, où se trouve les fichiers js.
+
+On utilise la commande CMD pour lancer le fichier js avec la ligne 
+
+`CMD ["node", "/opt/app/index.js"]`
 
 
 
