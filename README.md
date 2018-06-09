@@ -6,7 +6,7 @@
 
 ###Création  du Container Docker
 
-#### Création du Dockerfile 
+#### Création du Dockerfile pour une image php 
 
 Le container docker est crée à partir d'une image php trouvée sur le site dockeHub https://hub.docker.com/_/php/ 
 
@@ -64,9 +64,9 @@ Copier le contenu du fichier téléchargé dans le dossier `./content/` du proje
 
 ## Partie 2
 
-## Création du container Docker
+### Création du container Docker
 
-#### Création du Dockerfile
+#### Création du Dockerfile pour une image node
 
 Le container docker est crée à partir d'une image php trouvée sur le site dockeHub https://hub.docker.com/_/node/
 
@@ -77,6 +77,84 @@ Le DockerFile copie tous les fichiers du dossier `src` dans le dossier `/opt/app
 On utilise la commande CMD pour lancer le fichier js avec la ligne 
 
 `CMD ["node", "/opt/app/index.js"]`
+
+ Pour le lancement, se référer à  **Demarrage du container docker**. 
+
+
+
+### Création d'un serveur js devinant votre avenir avec Express js et Chance js
+
+Le container docker veux lancer le l'application index.js, il s'agit maintenant de créer ce fichier. 
+
+L'objectif est de créer une application qui renvoie l'avenir sous forme d'un tableau JSON 
+
+Pour ce faire, nous utilisons le framework express js
+
+#### Installation d'express js 
+
+Pour l'installation du module express.js, on utilise la commande 
+
+`npm install express --save` , où le --save permet de sauver le module dans le projet 
+
+**Installation optionnelle**
+
+Il est aussi possible d'installer express-generator  avec la commande 
+
+`npm install express-generator -g` , où -g signifie qu'express est installé en global  sur la machine. 
+
+Express-generator n'est pas utilisé pour ce projet, mais il permet de générer des commandes avec express pour créer des modules séparés à ajouter au projet.  
+
+
+
+#### Installation de chance.js
+
+Pour l'installation du module chance, on utilise la commande
+
+`npm install --save chance` 
+
+
+
+#### Configuration du serveur Express
+
+Dans notre configuration, nous avons défini le port d'écoute du serveur express, comme étant le port 80.
+
+Pour définir le port d'écoute du serveur, utiliser la méthode suivante dans le fichier lançant le serveur:
+
+`app.listen(<votre port>, function(){ ... });`  
+
+Il est possible de créer des requêtes en fonction de la route transmise dans l'url. Par exemple, il est possible de créer une requête GET depuis la route '/', avec la fonction: 
+
+```
+app.get('/', function(req,res){
+   <contenu de votre requête> 
+}).
+```
+
+Il est également possible de déterminer une autre route (par exemple '/test') de cette manière:
+
+```
+app.get('/test', function(req,res){
+   <contenu de votre requête> 
+}).
+```
+
+Pour le projet, nous écoutons la route "root" `'/'`
+
+
+
+## Partie 3
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
