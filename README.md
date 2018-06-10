@@ -2,17 +2,17 @@
 
 
 
-## Partie 1
+## Part 1 - Static HTTP server with apache httpd
 
-###Création  du Container Docker
+###Creating a Docker container
 
-#### Création du Dockerfile pour une image php 
+#### Creatie a Dockerfile with php image 
 
-Le container docker est crée à partir d'une image php trouvée sur le site dockeHub https://hub.docker.com/_/php/ 
+The Docker container is created from a php image found on docker hub: https://hub.docker.com/_/php/ 
 
-L'image "php:7.0-apache" offre un serveur apache permettant permettant de servir des pages php en version 7.0 du language. 
+The image "php:7.0-apache" offer a apache server that can serve php web pages, using 7.0 version of the language.
 
-Le DockerFile copie tous les fichiers du dossier `./content` dans le dossier `/var/www/html` du container, où se trouve les sites webs que nous voulons héberger.
+The DockerFile copies all the files and folders located in the local `./content` folder of the project in the `/var/www/html` folder of the container, where are hosted all out web sites.
 
 #### Demarrage du container Docker
 
