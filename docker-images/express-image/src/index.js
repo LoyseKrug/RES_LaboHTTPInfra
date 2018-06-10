@@ -23,6 +23,11 @@ app.get('/', function(req, res){
 	res.send(generateFuture());
 });
 
+
+app.get('/destination/', function(req, res){
+	res.send(destinations());
+});
+
 app.listen(80, function(){
 	console.log('Accepting requests on port 80.');
 });
@@ -47,6 +52,19 @@ function generateFuture(){
 	console.log(futurs);
 	return futurs;
 }
+
+function destinations(){
+	//on crée un tableau qui va contenir tous nos futurs possibles
+	var destinations = [];
+	for(var i = 0; i < 10; ++i){
+		destinations.push({
+			destination : chance.city()
+		});
+	};
+	console.log(destinations);
+	return destinations;
+}
+
 
 
 
