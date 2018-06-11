@@ -3,8 +3,10 @@ set -e
 
 #Add setup for RES lab
 echo "Setup for the RES lab..."
-echo "Static app URL: $STATIC_APP" 
-echo "Dynamic app URL: $DYNAMIC_APP"
+echo "Static app URL: $STATIC_APP1" 
+echo "Static app URL: $STATIC_APP2" 
+echo "Dynamic app URL: $DYNAMIC_APP1"
+echo "Dynamic app URL: $DYNAMIC_APP2"
 
 # call php script to get the env vars and dynamicly create the sites-available virtulhosts config file.
 php /var/apache2/template/config-template.php > /etc/apache2/sites-available/001-reverse-proxy.conf
