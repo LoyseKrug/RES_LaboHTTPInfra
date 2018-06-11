@@ -8,7 +8,7 @@
         ServerName laboinfra.res.ch
 
         ProxyPass '/api/futur/' 'http://<?php print "$DYNAMIC_APP"?>/'
-        ProxyPassReverse '/api/futur/' 'http://<?php print "$DYNAMIC_APP_APP"?>/'
+        ProxyPassReverse '/api/futur/' 'http://<?php print "$DYNAMIC_APP"?>/'
 
         ProxyPass '/' 'http://<?php print "$STATIC_APP"?>/'
         ProxyPassReverse '/' '<?php print "$STATIC_APP"?>/'
