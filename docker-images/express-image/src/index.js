@@ -1,5 +1,6 @@
 var Chance = require('chance');
 var express = require('express');
+var ip = require("ip");
 
 var chance = new Chance();
 
@@ -46,7 +47,8 @@ function generateFuture(){
 			hireDate : chance.date({string: true, american: false}),
 			profession : chance.profession(),
 			country : chance.country({ full: true }),
-			salary : chance.dollar({max: 1000000})
+			salary : chance.dollar({max: 1000000}),
+			ip : ip.address()
 		});
 	};
 	console.log(futurs);
