@@ -14,8 +14,8 @@
 		BalancerMember 'http://<?php print "$dynamic_app2"?>'
 	</Proxy>
 
-        ProxyPass '/api/futur/' 'balancer://mydynamiccluster'
-        ProxyPassReverse '/api/futur/' 'balancer://mydynamiccluster'
+        ProxyPass '/api/futur/' 'balancer://mydynamiccluster/'
+        ProxyPassReverse '/api/futur/' 'balancer://mydynamiccluster/'
 
 
 	<Proxy "balancer://mystaticcluster">
@@ -23,11 +23,13 @@
 		BalancerMember 'http://<?php print "$static_app2"?>'
 	</Proxy>
 
-        ProxyPass '/' 'balancer://mystaticcluster'
-        ProxyPassReverse '/' 'balancer://mystaticcluster'
+        ProxyPass '/' 'balancer://mystaticcluster/'
+        ProxyPassReverse '/' 'balancer://mystaticcluster/'
 	
 	<Location "/balancer-manager">
 		SetHandler balancer-manager
+		Order Allow,Deny
+		Allow from all
 	</Location>
 	ProxyPass /balancer-manager !
 
