@@ -21,8 +21,8 @@ docker run -d --name res_static1 res_static
 docker run -d --name res_static2 res_static
 docker run -d --name res_dynamic1 res_dynamic
 docker run -d --name res_dynamic2 res_dynamic
-#docker run -d -e STATIC_APP1=172.17.0.2:80 -e STATIC_APP2=172.17.0.3:80 -e DYNAMIC_APP1=172.17.0.4:80 -e DYNAMIC_APP2=172.17.0.5:80 -p 8080:80 --name res_proxy_balanced res_proxy_balanced
-docker run -it -e STATIC_APP1=172.17.0.2:80 -e STATIC_APP2=172.17.0.3:80 -e DYNAMIC_APP1=172.17.0.4:80 -e DYNAMIC_APP2=172.17.0.5:80 -p 8080:80 --name res_proxy_balanced res_proxy_balanced /bin/bash
+docker run -d -e STATIC_APP1=172.17.0.2:80 -e STATIC_APP2=172.17.0.3:80 -e DYNAMIC_APP1=172.17.0.4:80 -e DYNAMIC_APP2=172.17.0.5:80 -p 8080:80 --name res_proxy_balanced res_proxy_balanced
+#docker run -it -e STATIC_APP1=172.17.0.2:80 -e STATIC_APP2=172.17.0.3:80 -e DYNAMIC_APP1=172.17.0.4:80 -e DYNAMIC_APP2=172.17.0.5:80 -p 8080:80 --name res_proxy_balanced res_proxy_balanced /bin/bash
 
 
 #Show that everything is working
