@@ -1,0 +1,3 @@
+# to build the image with env vars set
+docker run -d -e STATIC_APP=172.17.0.2:80 -e DYNAMIC_APP=172.17.0.3:80 --name res_proxy -p 8080:80 res_proxy
+	

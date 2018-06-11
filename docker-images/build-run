@@ -1,0 +1,22 @@
+#allow kill
+if [[ $1 == kill ]]; then
+	echo 'Killing existing containers: '
+	docker kill $(docker ps -q)
+	docker rm $(docker ps -a -q)
+fi
+
+#builds all container images
+echo 'Building all images: '
+docker build -t res_static ./apache-php-image
+docker build -t res_dynamic ./express-image
+docker build -t res_proxy ./apache-reverse-proxy
+
+#runs all containers in good order
+echo 'Running all containers: '
+docker run -d --name res_static res_static
+docker run -d --name res_dynamic res_dynamic
+docker run -d -e STATIC_APP=172.17.0.2:80 -e DYNAMIC_APP=172.17.0.3:80 -p 8080:80 --name res_proxy res_proxy
+
+#Show that everything is working
+echo 'Displaying running containers: '
+docker ps
