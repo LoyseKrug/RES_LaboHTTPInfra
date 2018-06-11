@@ -1,16 +1,34 @@
 <?php
-	$DYNAMIC_APP = getenv('DYNAMIC_APP');
-	$STATIC_APP = getenv('STATIC_APP');
+	$dynamic_app1 = getenv('DYNAMIC_APP1');
+	$dynamic_app2 = getenv('DYNAMIC_APP2');
+	$static_app1 = getenv('STATIC_APP1');
+	$static_app2 = getenv('STATIC_APP2');
 ?>
 
 
 <VirtualHost *:80>
         ServerName laboinfra.res.ch
+	
+	<Proxy "balancer://mydynamiccluster">
+		BalancerMember 'http://<?php print "$dynamic_app1"?>'
+		BalancerMember 'http://<?php print "$dynamic_app2"?>'
+	</Proxy>
 
-        ProxyPass '/api/futur/' 'http://<?php print "$DYNAMIC_APP"?>/'
-        ProxyPassReverse '/api/futur/' 'http://<?php print "$DYNAMIC_APP"?>/'
+        ProxyPass '/api/futur/' 'balancer://mydynamiccluster'
+        ProxyPassReverse '/api/futur/' 'balancer://mydynamiccluster'
 
-        ProxyPass '/' 'http://<?php print "$STATIC_APP"?>/'
-        ProxyPassReverse '/' '<?php print "$STATIC_APP"?>/'
+
+	<Proxy "balancer://mystaticcluster">
+		BalancerMember 'http://<?php print "$static_app1"?>'
+		BalancerMember 'http://<?php print "$static_app2"?>'
+	</Proxy>
+
+        ProxyPass '/' 'balancer://mystaticcluster'
+        ProxyPassReverse '/' 'balancer://mystaticcluster'
+	
+	<Location "/balancer-manager">
+		SetHandler balancer-manager
+	</Location>
+	ProxyPass /balancer-manager !
 
 </VirtualHost>
