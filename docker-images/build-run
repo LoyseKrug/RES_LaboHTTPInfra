@@ -19,7 +19,9 @@ docker run -d --name res_static3 res_static
 docker run -d --name res_dynamic1 res_dynamic
 docker run -d --name res_dynamic2 res_dynamic
 docker run -d --name res_dynamic3 res_dynamic
-#docker run -d -e STATIC_APP=172.17.0.2:80 -e DYNAMIC_APP=172.17.0.3:80 -p 8080:80 --name res_proxy res_proxy
+docker run -d -e STATIC_APP=172.17.0.2:80 -e DYNAMIC_APP=172.17.0.5:80 -p 8080:80 --name res_proxy1 res_proxy
+docker run -d -e STATIC_APP=172.17.0.3:80 -e DYNAMIC_APP=172.17.0.6:80 -p 8081:80 --name res_proxy2 res_proxy
+docker run -d -e STATIC_APP=172.17.0.4:80 -e DYNAMIC_APP=172.17.0.7:80 -p 8082:80 --name res_proxy3 res_proxy
 
 #Show that everything is working
 echo 'Displaying running containers: '
