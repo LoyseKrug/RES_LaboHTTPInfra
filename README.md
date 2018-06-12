@@ -1,6 +1,6 @@
 # RES - Labo HTTPInfra
 
-
+[TOC]
 
 ## Part 1 - Static HTTP server with apache httpd
 
